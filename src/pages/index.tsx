@@ -1,4 +1,4 @@
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
@@ -38,9 +38,14 @@ export default function Home() {
       <div className="mx-auto w-full md:w-96">
         <div className="w-full mt-8">
           <span className="text-sm text-gray-600 text-left">
-            Select your shower head's flow rate
+            {`Select your shower head's flow rate`}
           </span>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
+            <FontAwesomeIcon
+              icon={faInfoCircle}
+              className="text-lg text-blue-600/80"
+            />
+
             <select
               onChange={(e) => setGPMInput(e.currentTarget.value)}
               value={gpmInput}
@@ -101,27 +106,35 @@ export default function Home() {
       </div>
 
       <div>
-        <div className="text-9xl md:text-[14rem] leading-[0.9] font-extrabold bg-clip-text text-transparent bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-500 mt-12">
+        <div className="water-text text-9xl md:text-[14rem] leading-[0.9] font-extrabold mt-12">
           {calculatedGallons.toFixed(1)}
         </div>
-        <div className="text-2xl">
+        <div className="text-2xl text-gray-700">
           gallons ({(calculatedGallons * 3.78541).toFixed(1)} liters)
         </div>
       </div>
 
-      <div className="text-5xl md:text-6xl leading-[0.9] font-bold mt-10">
+      <div className="text-5xl md:text-6xl leading-[0.9] font-bold mt-12">
         {seconds.toFixed(1)}
       </div>
-      <div className="text-lg">seconds</div>
+      <div className="text-lg text-gray-700">seconds</div>
 
-      <div className="text-lg text-pretty mt-16">
+      <div className="bg-gray-900 text-white w-fit text-2xl md:text-3xl text-pretty rounded-xl px-6 py-4 mt-24 mx-auto">
         How that water was used
-        <FontAwesomeIcon icon={faArrowDown} className="ml-2" />
+        <FontAwesomeIcon icon={faArrowDown} className="ml-3" />
       </div>
 
-      <div className="text-lg text-pretty mt-16">
+      <div className="water-text text-5xl md:text-6xl font-bold mt-12">
+        {(calculatedGallons * 365).toFixed(1)}
+      </div>
+      <div className="text-lg text-gray-700">gallons per year</div>
+      <div className="text-sm text-gray-700">
+        (assuming one shower of the same length every day)
+      </div>
+
+      <div className="bg-gray-900 text-white w-fit text-2xl md:text-3xl text-pretty rounded-xl px-6 py-4 mt-24 mx-auto">
         How that water could have been used
-        <FontAwesomeIcon icon={faArrowDown} className="ml-2" />
+        <FontAwesomeIcon icon={faArrowDown} className="ml-3" />
       </div>
     </>
   );

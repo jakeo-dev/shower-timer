@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @layer components {
+  .water-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-500;
+  }
   .selectArrows {
     -webkit-appearance: none;
     -moz-appearance: none;
